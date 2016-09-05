@@ -59,10 +59,10 @@ function declarationDiffMap(elem){
 }
 
 function predictChangeType(oldAst, changedAst, options){
-	var oldUniques = extractUniqueCssRules(oldAst);
-	var changedUniques = extractUniqueCssRules(changedAst);
+	var oldUniques = extractUniqueCssSelectors(oldAst);
+	var changedUniques = extractUniqueCssSelectors(changedAst);
 
-	// note that underscores differnce is not symetric
+	// note that underscores difference is not symetric
 	// but only removes x elements from the y array in difference(y,x)
 	var oldsNotInChanged = _.difference(oldUniques, changedUniques);
 	var changedsNotInOld = _.difference(changedUniques, oldUniques);
@@ -95,7 +95,7 @@ function predictChangeType(oldAst, changedAst, options){
 	throw "Unable to predict version";
 }
 
-function extractUniqueCssRules(ast) {
+function extractUniqueCssSelectors(ast) {
 	var rules = ast.stylesheet.rules.filter(r => {return r.type === 'rule'});
 	var selectorsList = rules.map(r => {return r.selectors});
 	var selectors = _.flatten(selectorsList);

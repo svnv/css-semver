@@ -6,8 +6,14 @@
   "scripts": {
     "test": "mocha tests.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "svnv <sven.viig@gmail.com>",
+  "repository": "git://github.com/svnv/css-semver.git",
+  "licenses":[
+    {
+      "type": "MIT",
+      "url": "http://github.com/svnv/css-semver/raw/master/LICENSE"
+    }
+  ],
   "devDependencies": {
     "mocha": "^3.0.2"
   },

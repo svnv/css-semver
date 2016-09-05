@@ -24,7 +24,6 @@ The exported function returns:
 - `"patch"` when the selectors are equal but there are other changes to the stylesheet. _A bug has been fixed but the api is unchanged._
 
 
-
 ### Example
 
 	var cssSemver = require('css-semver')
@@ -36,11 +35,23 @@ The exported function returns:
 Verbose mode will log a diff of the changes in the build to the console. 
 
 	var cssSemver = require('css-semver')
-	cssSemver('.old { color: #fff }', '.changed { color: #fff }', {verbose: true});
+	cssSemver('.old { color: #fff }', '.added { color: #fff }', {verbose: true});
 	// - .old
-	// + .changed
+	// + .added
 	// returns "major"
 
 ## Tests
 
-See test.js for the test suite
+See [tests.js](https://github.com/svnv/css-semver/master/tests.js) for the test suite.
+
+To run the test suite use this command.
+
+	npm test
+
+
+## TODO
+
+### Better verbose mode logging for _patch_ 
+
+- Check if order of selectors is the same, and log changes
+- Do a deep comparison on each rule and log changed rules

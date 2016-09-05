@@ -53,6 +53,10 @@ describe('cssSemver', function() {
       assert.equal('patch', cssSemver('.a, .b{color: #000;}','.a{color: #000;} .b{color: #000;}'));
     });
 
+    it('Should return patch when selectors are equal but selectors are ordered differently', function() {
+      assert.equal('patch', cssSemver('.b{color: #000;} .a{color: #fff;}','.a{color: #fff;} .b{color: #000;}'));
+    });
+
     // null
 
 	it('Should return null when no values are defined', function() {
