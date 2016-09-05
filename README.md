@@ -11,9 +11,9 @@ Use this module to compare builds of css files, and get the corresponding [semve
 
 Arguments:
 
-	- `oldCss` string 
-	- `newCss` string 
-	- `options` object, can be used to activate verbose mode
+- `oldCss` string 
+- `newCss` string 
+- `options` object, can be used to activate verbose mode
 
 
 The exported function returns:
@@ -42,7 +42,7 @@ Verbose mode will log a diff of the changes in the build to the console.
 
 ## Tests
 
-See [tests.js](https://github.com/svnv/css-semver/master/tests.js) for the test suite.
+See [tests.js](https://github.com/svnv/css-semver/blob/master/tests.js) for the test suite.
 
 To run the test suite use this command.
 
