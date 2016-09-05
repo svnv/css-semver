@@ -1,4 +1,4 @@
-# css-semver
+# css-semver [![Build Status](https://travis-ci.org/svnv/css-semver.svg?branch=master)](https://travis-ci.org/svnv/css-semver)
 
 Use this module to compare builds of css files, and get the corresponding [semver](http://semver.org/) upgrade increment based on changes in the stylesheets.
 
