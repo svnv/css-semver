@@ -30,7 +30,7 @@ module.exports = function (old, changed, options){
 		}	
 	} catch(e){
 		console.log('Oh no, something went wrong during css comparison.');
-		console.error(e);
+		// console.error(e, e.stack.split("\n"));
 	}
 };
 
@@ -45,8 +45,8 @@ function ruleDiffMap(elem){
 	// rules have different whitespace
 	return {
 		'type': elem.type,
-		'declarations': elem.declarations.map(declarationDiffMap),
-		'selectors': elem.selectors
+		'declarations': elem.declarations ? elem.declarations.map(declarationDiffMap) : null,
+		'selectors': elem.selectors || null 
 	}
 }
 

@@ -96,4 +96,11 @@ describe('cssSemver', function() {
       assert.equal(logStack.length, 2);
       disableMockLog();
     });
+
+
+    // comments in css
+    it('Should not return null and fail when a comment exists in the css', function() {
+      assert.equal('patch', cssSemver('.test{color: #000;} .unchanged{display:none} /* this is a comment */','.test{color: #fff;}  .unchanged{display:none}'));
+    });
+
 });

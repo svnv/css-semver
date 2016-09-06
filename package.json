@@ -1,7 +1,7 @@
 {
   "name": "css-semver",
   "version": "0.0.1",
-  "description": "A module to diff changes to a css file and get the semver version increment type (\"major\",\"minor\" or \"patch\") for the css.",
+  "description": "A module to diff changes to a css file and get the semver version update type",
   "main": "index.js",
   "scripts": {
     "test": "mocha tests.js"
