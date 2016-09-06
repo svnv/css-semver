@@ -1,6 +1,6 @@
 {
   "name": "css-semver",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A module to diff changes to a css file and get the semver version update type",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "author": "svnv <sven.viig@gmail.com>",
   "repository": "git://github.com/svnv/css-semver.git",
-  "licenses":[
+  "licenses": [
     {
       "type": "MIT",
       "url": "http://github.com/svnv/css-semver/raw/master/LICENSE"
