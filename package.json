@@ -1,6 +1,6 @@
 {
   "name": "css-semver",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A module to diff changes to a css file and get the semver version update type",
   "main": "index.js",
   "scripts": {
