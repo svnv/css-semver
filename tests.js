@@ -57,50 +57,61 @@ describe('cssSemver', function() {
       assert.equal('patch', cssSemver('.b{color: #000;} .a{color: #fff;}','.a{color: #fff;} .b{color: #000;}'));
     });
 
+    it('Should return patch when selectors are not equal and selectors are ordered differently, complex', function() {
+        assert.equal('patch', cssSemver('.b{color: #ddd; width: 33px} .a{color: #fff; width: 33px}','.a{color: #fff; width: 33px} .b{color: #000; width: 33px}'));
+      });
+
+    
+
     // null
 
-	it('Should return null when no values are defined', function() {
-      assert.equal(null, cssSemver());
-    });
+    it('Should return null when no values are defined', function() {
+        assert.equal(null, cssSemver());
+      });
 
-	it('Should return null when both values are null', function() {
-      assert.equal(null, cssSemver(null, null));
-    });
+    it('Should return null when both values are null', function() {
+        assert.equal(null, cssSemver(null, null));
+      });
 
     it('Should return null when old and changed are equal', function() {
       assert.equal(null, cssSemver('.a{display:none} .b{color: #000;} ',' .a {display:none} .b {color: #000;}'));
     });
 
     it('Should return null when selectors and content are equal but has different withespace', function() {
-      assert.equal(null, cssSemver('.a{display:none} .b{color: #000;} ',' .a {display:none} 	.b {color: #000;}'));
+      assert.equal(null, cssSemver('.a{display:none;} .b{color: #000;} ',' .a {display:none} 	.b {color: #000;}', {verbose:true}));
     });
 
     // verbose mode
+    
+    var originalLog;
+    var logStack = [];
+    function enableMockLog (){
+      originalLog = console.log;
+      console.log = function (message) {
+        logStack.push(message);
+      };
+    }
+    function disableMockLog() {
+      console.log = originalLog;
+      logStack = [];
+    }
+    try{
+      
+      it('Should work with verbose mode when changed has less selectors than old and another selector was added', function() {
+        enableMockLog();
+        assert.equal('major', cssSemver('.test{color: #000;} .deleted{display:none}','.test{color: #fff;} .added{visibility: hidden}', {verbose: true}));
+        assert.equal(logStack.length, 4);
+        disableMockLog();
+      });
+      
+      // comments in css
+      it('Should not return null and fail when a comment exists in the css', function() {
+        assert.equal('patch', cssSemver('.test{color: #000;} .unchanged{display:none} /* this is a comment */','.test{color: #fff;}  .unchanged{display:none}'));
+      });
 
-	var originalLog;
-	var logStack = [];
-	function enableMockLog (){
-		originalLog = console.log;
-		console.log = function (message) {
-			logStack.push(message);
-		};
-	}
-	function disableMockLog() {
-		console.log = originalLog;
-		logStack = [];
-	}
-
-    it('Should work with verbose mode when changed has less selectors than old and another selector was added', function() {
-      enableMockLog();
-      assert.equal('major', cssSemver('.test{color: #000;} .deleted{display:none}','.test{color: #fff;} .added{visibility: hidden}', {verbose: true}));
-      assert.equal(logStack.length, 2);
-      disableMockLog();
-    });
-
-
-    // comments in css
-    it('Should not return null and fail when a comment exists in the css', function() {
-      assert.equal('patch', cssSemver('.test{color: #000;} .unchanged{display:none} /* this is a comment */','.test{color: #fff;}  .unchanged{display:none}'));
-    });
+    } catch(e){
+      disableMockLog()
+      console.log(e)
+    }
 
 });
