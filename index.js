@@ -135,7 +135,7 @@ function getDelclerationsBySelectors(rules){
 	if(!rules) return {}
 	var bySelectors = {}
 	rules.forEach((rule)=>{
-		// if(!rule.selectors) return
+		if(!rule.selectors) return
 		rule.selectors.forEach(selector =>{
 			if(!bySelectors[selector]){
 				bySelectors[selector] = []
