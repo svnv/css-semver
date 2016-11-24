@@ -117,7 +117,7 @@ function logChanged(a, b, options){
 			compareDeclerations(aBySelectors[selector][0], bBySelectors[selector][0])
 		})
 	} catch(e){
-		console.log('err', e)
+		console.log('Error in css-semver verbose mode: ', e)
 	}
 }
 
@@ -132,6 +132,7 @@ function compareDeclerations(a, b){
 }
 
 function getDelclerationsBySelectors(rules){
+	if(!rules) return {}
 	var bySelectors = {}
 	rules.forEach((rule)=>{
 		// if(!rule.selectors) return
