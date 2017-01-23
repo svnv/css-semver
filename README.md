@@ -1,5 +1,7 @@
 # css-semver [![Build Status](https://travis-ci.org/svnv/css-semver.svg?branch=master)](https://travis-ci.org/svnv/css-semver)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/svnv/css-semver.svg)](https://greenkeeper.io/)
+
 Use this module to compare builds of css files, and get the corresponding [semver](http://semver.org/) upgrade increment based on changes in the stylesheets.
 
 
